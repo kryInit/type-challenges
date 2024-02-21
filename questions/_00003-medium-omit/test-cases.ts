@@ -8,6 +8,12 @@ type cases = [
 // @ts-expect-error
 type error = MyOmit<Todo, 'description' | 'invalid'>
 
+
+type IsValid<T, K> = K extends keyof T ? unknown : never;
+
+type x = IsValid<Todo, 'escription'>
+type y = x & number;
+
 interface Todo {
   title: string
   description: string
